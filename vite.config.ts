@@ -20,7 +20,7 @@ export default defineConfig({
     target: 'esnext',
 
     // ⭐ Vercel automatically serves this output
-    outDir: 'build',
+    outDir: 'dist',
 
     // ⭐ Prevents root-file loading issues
     assetsDir: 'assets',
