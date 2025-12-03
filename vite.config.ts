@@ -3,26 +3,21 @@ import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
 export default defineConfig({
-  // ⭐ REQUIRED FOR VERCEL
-  // No subfolder, no trailing slash
-  base: '',
+  base: '/', // Changed from '' to '/' for better compatibility
 
   plugins: [react()],
 
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      // FIX: Use relative path instead of __dirname
+      '@': path.resolve('./src'), 
     },
   },
 
   build: {
     target: 'esnext',
-
-    // ⭐ Vercel automatically serves this output
     outDir: 'dist',
-
-    // ⭐ Prevents root-file loading issues
     assetsDir: 'assets',
   },
 
