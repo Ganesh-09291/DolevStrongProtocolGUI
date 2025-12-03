@@ -3,21 +3,18 @@ import react from '@vitejs/plugin-react-swc';
 import path from 'path';
 
 export default defineConfig({
-  base: './',   // ✅ IMPORTANT FOR VERCEL
+  base: '',  // ⭐ VERY IMPORTANT for Vercel (no / at start or end)
 
   plugins: [react()],
+
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
+
   build: {
-    target: 'esnext',
-    outDir: 'build',
-  },
-  server: {
-    port: 3000,
-    open: true,
+    outDir: 'build', // ✔ Vercel auto-detects
+    assetsDir: 'assets',
   },
 });
